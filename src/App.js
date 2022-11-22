@@ -1,7 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import {getPictureOfTheDay} from "./api";
+import {useEffect} from "react";
 
 function App() {
+  useEffect(() => {
+    const getImage = async () => {
+      const response = await getPictureOfTheDay();
+      console.log("Parsed response body:", response);
+    }
+
+    getImage();
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
