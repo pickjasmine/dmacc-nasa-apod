@@ -4,7 +4,15 @@ import {getPictureOfTheDay} from "./api";
 import {useEffect} from "react";
 
 function App() {
+  // useState in order to save state in our app
+
+  // useEffect is a hook
+  // useEffect is function
+  // useEffect takes two parameters - first is a function that will happen when the effect triggers
+  // second param is the dependency array
+  // dependency array tells the effect hook when to run
   useEffect(() => {
+    // useEffect hooks cannot call out to async calls directly
     const getImage = async () => {
       const response = await getPictureOfTheDay();
       console.log("Parsed response body:", response);
@@ -12,6 +20,7 @@ function App() {
 
     getImage();
   }, []);
+
   return (
     <div className="App">
       <header className="App-header">
