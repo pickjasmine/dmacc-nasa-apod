@@ -8,7 +8,7 @@ export const getPictureOfTheDay = async () => {
 
     const response = await fetch(apiUrl);
 
-    console.log('response from NASA: ', response);
+    // console.log('response from NASA: ', response);
 
     if (response.status !== 200) {
         console.error('Error returned:', response);
