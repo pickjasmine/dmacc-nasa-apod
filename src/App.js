@@ -18,19 +18,17 @@ function App() {
     }, []);
 
     const handleInput = (event) => {
-        console.log('input change event', event);
         setDate(event.target.value);
     }
 
-    const handleClick = async (event) => {
-        console.log('click event', event);
+    const handleClick = async () => {
         setPod(null);
         const response = await getPictureOfTheDay(date);
 
         setPod(response);
     }
 
-    console.log('DATE', date);
+    console.log(pod);
 
     return (
         <div>
@@ -43,7 +41,12 @@ function App() {
                     <>
                         <h1>{pod.title}</h1>
                         <p>{pod.explanation}</p>
-                        <img src={pod.hdurl} alt={pod.title} width="50%"></img>
+                        {
+                            pod.media_type === "video" ?
+                                <iframe src={pod.url}></iframe>
+                                :
+                                <img src={pod.hdurl} alt={pod.title} width="50%"></img>
+                        }
                     </>
                     :
                     <h1>Loading...</h1>
