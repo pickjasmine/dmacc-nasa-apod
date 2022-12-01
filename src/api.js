@@ -2,9 +2,13 @@ import {NASA_API_KEY} from "./secrets";
 
 const API_URL_BASE = "https://api.nasa.gov/planetary/apod";
 
-export const getPictureOfTheDay = async () => {
-    const apiUrl = `${API_URL_BASE}?api_key=${NASA_API_KEY}`;
+export const getPictureOfTheDay = async (desiredDate = null) => {
+    let apiUrl = `${API_URL_BASE}?api_key=${NASA_API_KEY}`;
     //// string templating
+
+    if (desiredDate) {
+        apiUrl = `${apiUrl}&date=${desiredDate}`;
+    }
 
     const response = await fetch(apiUrl);
 
